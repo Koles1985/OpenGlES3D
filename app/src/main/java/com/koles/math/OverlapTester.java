@@ -54,4 +54,18 @@ public class OverlapTester {
         return r.lowerLeft.x <= x && r.lowerLeft.x + r.width >= x &&
                 r.lowerLeft.y <= y && r.lowerLeft.y + r.height >= y;
     }
+
+    public static boolean overlapSphere(Sphere s1, Sphere s2){
+        float distance = s1.center.distSquared(s2.center);
+        float radiusSum = s1.radius + s2.radius;
+        return distance <= radiusSum * radiusSum;
+    }
+
+    public static boolean pointInSphere(Sphere s, float x, float y, float z){
+        return  s.center.distSquared(x, y, z) < s.radius * s.radius;
+    }
+
+    public static boolean pointInSphere(Sphere s, Vector3 v){
+        return  s.center.distSquared(v) < s.radius * s.radius;
+    }
 }
